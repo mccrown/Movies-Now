@@ -39,7 +39,10 @@ var displayStreaming = function (movies) {
         console.log(movieName);
 
         // display movie image
-        
+        var image = movies.results[i].posterURLs[92];
+        var imageEl = movieElement.querySelector("#movieImage-" + i);
+        imageEl.setAttribute("src", image);
+        imageEl.setAttribute("alt", "Movie poster");
     }
 }
 streamingAPI();
