@@ -1,3 +1,4 @@
+var genre = document.querySelector("data-genre-id");
 var movieElement = document.querySelector("#movies");
 
 // fetch movies based on genre and streaming service
