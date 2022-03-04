@@ -5,8 +5,8 @@
 }
 
 main{
-    padding: 40px;
-    background:linear-gradient(black, #022461);
+    padding: 40px 40px 0 40px;
+    background:linear-gradient(rgb(12, 24, 44), #022461);
     color: white;
 }
 
@@ -18,7 +18,8 @@ header{
     background-position: bottom;
     height: 200px;
     font-style: italic;
-    border: 5px solid black;
+    /* border: 5px solid black; */
+    border-bottom: 20px solid rgb(85, 108, 155);
     padding: 25px 0;
 }
 
@@ -26,9 +27,18 @@ h1 {
     font-size: 100px;
     color: white;
     text-shadow: 5px 10px 18px black;
-    -webkit-text-stroke: 3px darkslategray;
+    -webkit-text-stroke: 3px rgb(10, 54, 104);
     font-family: 'Rubik Mono One', sans-serif;
-    margin-left: 20px;
+    margin-left: 50px;
+}
+
+.search-criteria {
+    border-right: solid 1.5px rgb(85, 108, 155);
+    padding-right: 50px;
+}
+
+hr {
+    background-color: rgb(85, 108, 155);
 }
 
 h4{
