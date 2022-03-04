@@ -13,40 +13,99 @@
 <body>
 
     <Header>
-        <h1>Website Name</h1>
+        <h1>Movies Now</h1>
     </Header>
+    <br>
 
     <main class="columns is-mobile">
+        <div class="column is-2 search-criteria">
+            <div id="services">
+                <input type="checkbox" id="disney" name="disney" value="disney">
+                <label for="disney">Disney+</label><br>
 
-        <div class="column is-3">
-            <div class="input">
-                <input id="inputValue" type="text" placeholder="Enter a genre" />
-                <input id="searchBtn" type="submit" value="Submit" class="button search"></input>
+                <input type="checkbox" id="netflix" name="netflix" value="netflix">
+                <label for="netflix">Netflix</label><br>
+
+                <input type="checkbox" id="hulu" name="hulu" value="hulu">
+                <label for="hulu">Hulu</label><br>
             </div>
+            <hr>
+            <!-- </div> -->
 
-            <div>
-                <input type="checkbox" id="comedy" name="comedy" value="comedy">
-                <label for="comedy">Comedy</label><br>
+            <!-- <div class="column is-2"> -->
 
-                <input type="checkbox" id="action" name="action" value="action">
+            <div class="genres">
+                <input type="checkbox" id="biography" name="biography" value="biography" data-genre-id="1">
+                <label for="biography">Biography</label><br>
+
+                <input type="checkbox" id="musical" name="musical" value="musical" data-genre-id="4">
+                <label for="musical">Musical</label><br>
+
+                <input type="checkbox" id="sport" name="sport" value="sport" data-genre-id="5">
+                <label for="sport">Sport</label><br>
+
+                <input type="checkbox" id="adventure" name="adventure" value="adventure" data-genre-id="12">
+                <label for="adventure">Adventure</label><br>
+
+                <input type="checkbox" id="drama" name="drama" value="drama" data-genre-id="18">
+                <label for="drama">Drama</label><br>
+
+                <input type="checkbox" id="horror" name="horror" value="horror" data-genre-id="27">
+                <label for="horror">Horror</label><br>
+
+                <input type="checkbox" id="action" name="action" value="action" data-genre-id=28">
                 <label for="action">Action</label><br>
 
-                <input type="checkbox" id="drama" name="drama" value="drama">
-                <label for="drama">Drama</label><br>
-                
-                <input type="checkbox" id="horror" name="horror" value="horror">
-                <label for="horror">Horror</label><br>
+                <input type="checkbox" id="comedy" name="comedy" value="comedy" data-genre-id="35">
+                <label for="comedy">Comedy</label><br>
+
+                <input type="checkbox" id="mystery" name="mystery" value="mystery" data-genre-id="9648">
+                <label for="mystery">Mystery</label><br>
+
+                <input type="checkbox" id="romance" name="romance" value="romance" data-genre-id="10749">
+                <label for="romance">Romance</label><br>
                 <!-- add more genres, tie them to corresponding index from API -->
+            </div>
+            
+            <div class="input">
+                <input id="inputValue" type="text" placeholder="Enter a genre">
+                <br>
+                <input id="searchBtn" type="submit" value="Submit" class="button search"></input>
             </div>
         </div>
 
 
-        <div class="column is-9 is-mobile">
+
+        <div>
             <div class="result">
                 <h4>Movie Name</h4>
+                <hr>
+                <p>Rating</p>
+                <p>Overview Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                    Soluta dolorum in natus numquam omnis sequi vitae nisi officiis!<br>
+                    Laudantium consequatur expedita corporis nobis eos eaque ea pers
+                    ciatis excepturi necessitatibus odio.</p>
                 <!-- pull movie image from API -->
-                <img src="https://via.placeholder.com/150" alt="">
-                <div class="streaming-services">
+                <img src="https://via.placeholder.com/300" alt="">
+                <div class="streaming-services columns is-mobile is-centered">
+                    <!-- add image from API for streaming services -->
+                    <div class="card column is-3">Disney+</div>
+                    <div class="card column is-3">Netflix</div>
+                    <div class="card column is-3">Hulu</div>
+                </div>
+            </div><br>
+
+            <div class="result">
+                <h4>Movie Name</h4>
+                <hr>
+                <p>Rating</p>
+                <p>Overview Lorem ipsum dolor sit amet consectetur, adipisicing elit.<br>
+                    Soluta dolorum in natus numquam omnis sequi vitae nisi officiis!<br>
+                    Laudantium consequatur expedita corporis nobis eos eaque ea pers<br>
+                    ciatis excepturi necessitatibus odio.</p>
+                <!-- pull movie image from API -->
+                <img src="https://via.placeholder.com/300" alt="">
+                <div class="streaming-services columns is-mobile is-centered">
                     <!-- add image from API for streaming services -->
                     <div class="card column is-3">Disney+</div>
                     <div class="card column is-3">Netflix</div>
@@ -56,21 +115,15 @@
 
             <div class="result">
                 <h4>Movie Name</h4>
+                <hr>
+                <p>Rating</p>
+                <p>Overview Lorem ipsum dolor sit amet consectetur, adipisicing elit.<br>
+                    Soluta dolorum in natus numquam omnis sequi vitae nisi officiis!<br>
+                    Laudantium consequatur expedita corporis nobis eos eaque ea pers<br>
+                    ciatis excepturi necessitatibus odio.</p>
                 <!-- pull movie image from API -->
-                <img src="https://via.placeholder.com/150" alt="">
-                <div class="streaming-services">
-                    <!-- add image from API for streaming services -->
-                    <div class="card column is-3">Disney+</div>
-                    <div class="card column is-3">Netflix</div>
-                    <div class="card column is-3">Hulu</div>
-                </div>
-            </div>
-
-            <div class="result">
-                <h4>Movie Name</h4>
-                <!-- pull movie image from API -->
-                <img src="https://via.placeholder.com/150" alt="">
-                <div class="streaming-services">
+                <img src="https://via.placeholder.com/300" alt="">
+                <div class="streaming-services columns is-mobile is-centered">
                     <!-- add image from API for streaming services -->
                     <div class="card column is-3">Disney+</div>
                     <div class="card column is-3">Netflix</div>
