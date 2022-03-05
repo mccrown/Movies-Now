@@ -8,17 +8,15 @@ const hulu = document.querySelector("#hulu");
 // fetch movies based on genre and streaming service
 var streamingAPI = function (streamingService, genre) {
 
-    var streamingSerice = function () {
+    // streamingService = whatever streaming service checkbox is checked
+    var streamingService = function () {
         if (disney.checked) {
-            // streamingAPI(disney);
             streamingService = disney;
         }
         else if (netflix.checked) {
-            // streamingAPI(netflix);
             streamingService = netflix;
         }
         else {
-            // streamingAPI(hulu);
             streamingService = hulu;
         };
     };
