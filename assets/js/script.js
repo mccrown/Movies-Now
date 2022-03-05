@@ -1,8 +1,28 @@
 var genre = document.querySelector("data-genre-id");
 var movieElement = document.querySelector("#movies");
+const disney = document.querySelector("#disney");
+const netflix = document.querySelector("#netflix");
+const hulu = document.querySelector("#hulu");
+
 
 // fetch movies based on genre and streaming service
 var streamingAPI = function (streamingService, genre) {
+
+    var streamingSerice = function () {
+        if (disney.checked) {
+            // streamingAPI(disney);
+            streamingService = disney;
+        }
+        else if (netflix.checked) {
+            // streamingAPI(netflix);
+            streamingService = netflix;
+        }
+        else {
+            // streamingAPI(hulu);
+            streamingService = hulu;
+        };
+    };
+
     fetch("https://streaming-availability.p.rapidapi.com/search/basic?country=us&service=" + streamingService + "&type=movie&genre=" + genre + "&page=1&output_language=en&language=en", {
         "method": "GET",
         "headers": {
@@ -40,7 +60,7 @@ var displayStreaming = function (movies) {
         console.log(movieName);
 
         // display movie overview
-        var overviewEl = movieElement.querySelector("#overview-"+ i);
+        var overviewEl = movieElement.querySelector("#overview-" + i);
         var movieOverview = movies.results[i].overview;
         overviewEl.textContent = movieOverview;
 
@@ -50,4 +70,5 @@ var displayStreaming = function (movies) {
         imageEl.setAttribute("src", image);
         imageEl.setAttribute("alt", "Movie poster");
     }
-}
+};
+
