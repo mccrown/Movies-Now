@@ -8,24 +8,12 @@ const hulu = document.querySelector("#hulu");
 // fetch movies based on genre and streaming service
 var streamingAPI = function (streamingService, genre) {
 
-    // streamingService = whatever streaming service checkbox is checked
-    var streamingService = function () {
-        if (disney.checked) {
-            streamingService = disney;
-        }
-        else if (netflix.checked) {
-            streamingService = netflix;
-        }
-        else {
-            streamingService = hulu;
-        };
-    };
 
     fetch("https://streaming-availability.p.rapidapi.com/search/basic?country=us&service=" + streamingService + "&type=movie&genre=" + genre + "&page=1&output_language=en&language=en", {
         "method": "GET",
         "headers": {
             "x-rapidapi-host": "streaming-availability.p.rapidapi.com",
-            "x-rapidapi-key": "454448608emsh73079d61e5d57cep1bb207jsn7a7395c1a6e0"
+            "x-rapidapi-key": "c2e4a40e25msh764d0c03c3c77b5p1908ccjsnd1ec048c5ef4"
         }
     })
         .then(response => {
@@ -49,7 +37,7 @@ var displayStreaming = function (movies) {
     console.log(movies);
 
     // iterate through movie data
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i < 5; i++) {
 
         //display movie name
         var nameEl = movieElement.querySelector("#movieName-" + i);
@@ -69,4 +57,3 @@ var displayStreaming = function (movies) {
         imageEl.setAttribute("alt", "Movie poster");
     }
 };
-
