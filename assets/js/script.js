@@ -1,5 +1,6 @@
 var genre = document.querySelector("data-genre-id");
 var movieElement = document.querySelector("#movies");
+var searchButton = document.querySelector("#button");
 const disney = document.querySelector("#disney");
 const netflix = document.querySelector("#netflix");
 const hulu = document.querySelector("#hulu");
@@ -9,8 +10,8 @@ const hulu = document.querySelector("#hulu");
 var streamingAPI = function (streamingService, genre) {
 
     // streamingService = whatever streaming service checkbox is checked
-    // var streamingService = function () {
-    //     if (disney.checked) {
+    //var streamingService = function () {
+    //   if (disney.checked) {
     //         streamingService = disney;
     //     }
     //     else if (netflix.checked) {
@@ -67,7 +68,56 @@ var displayStreaming = function (movies) {
         var imageEl = movieElement.querySelector("#movieImage-" + i);
         imageEl.setAttribute("src", image);
         imageEl.setAttribute("alt", "Movie poster");
-        imageEl.style.width="200px";
-        imageEl.style.width="100px";
+        imageEl.style.width = "200px";
+        imageEl.style.width = "100px";
     }
 };
+
+searchButton.addEventListener("click", function () {
+    var streaming;
+    var genre;
+    if (disney.checked) {
+        streaming = disney;
+    }
+    else if (netflix.checked) {
+        streaming = "netflix";
+    }
+    else {
+        streaming = hulu;
+    };
+    if (action.checked) {
+        genre = "28";
+    }
+    else if (adventure.checked) {
+        genre = "12";
+    }
+    else if (biography.checked) {
+        genre = "1";
+    }
+    else if (comedy.checked) {
+        genre = "35";
+    }
+    else if (crime.checked) {
+        genre = "80";
+    }
+    else if (drama.checked) {
+        genre = "18";
+    }
+    else if (horror.checked) {
+        genre = "27";
+    }
+    else if (musical.checked) {
+        genre = "4";
+    }
+    else if (mystery.checked) {
+        genre = "9648";
+    }
+    else if (romance.checked) {
+        genre = "10749";
+    }
+    else if (sport.checked) {
+        genre = "5";
+    };
+
+    streamingAPI(streaming, genre);
+});
