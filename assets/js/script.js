@@ -9,19 +9,6 @@ const hulu = document.querySelector("#hulu");
 // fetch movies based on genre and streaming service
 var streamingAPI = function (streamingService, genre) {
 
-    // streamingService = whatever streaming service checkbox is checked
-    //var streamingService = function () {
-    //   if (disney.checked) {
-    //         streamingService = disney;
-    //     }
-    //     else if (netflix.checked) {
-    //         streamingService = netflix;
-    //     }
-    //     else {
-    //         streamingService = hulu;
-    //     };
-    // };
-
     fetch("https://streaming-availability.p.rapidapi.com/search/basic?country=us&service=" + streamingService + "&type=movie&genre=" + genre + "&page=1&output_language=en&language=en", {
         "method": "GET",
         "headers": {
