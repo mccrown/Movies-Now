@@ -1,5 +1,6 @@
 var genre = document.querySelector("data-genre-id");
 var movieElement = document.querySelector("#movies");
+var searchButton = document.querySelector("#button");
 const disney = document.querySelector("#disney");
 const netflix = document.querySelector("#netflix");
 const hulu = document.querySelector("#hulu");
@@ -9,23 +10,23 @@ const hulu = document.querySelector("#hulu");
 var streamingAPI = function (streamingService, genre) {
 
     // streamingService = whatever streaming service checkbox is checked
-    var streamingService = function () {
-        if (disney.checked) {
-            streamingService = disney;
-        }
-        else if (netflix.checked) {
-            streamingService = netflix;
-        }
-        else {
-            streamingService = hulu;
-        };
-    };
+    //var streamingService = function () {
+     //   if (disney.checked) {
+    //         streamingService = disney;
+    //     }
+    //     else if (netflix.checked) {
+    //         streamingService = netflix;
+    //     }
+    //     else {
+    //         streamingService = hulu;
+    //     };
+    // };
 
     fetch("https://streaming-availability.p.rapidapi.com/search/basic?country=us&service=" + streamingService + "&type=movie&genre=" + genre + "&page=1&output_language=en&language=en", {
         "method": "GET",
         "headers": {
             "x-rapidapi-host": "streaming-availability.p.rapidapi.com",
-            "x-rapidapi-key": "454448608emsh73079d61e5d57cep1bb207jsn7a7395c1a6e0"
+            "x-rapidapi-key": "c2e4a40e25msh764d0c03c3c77b5p1908ccjsnd1ec048c5ef4"
         }
     })
         .then(response => {
@@ -49,7 +50,7 @@ var displayStreaming = function (movies) {
     console.log(movies);
 
     // iterate through movie data
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i < 5; i++) {
 
         //display movie name
         var nameEl = movieElement.querySelector("#movieName-" + i);
@@ -70,3 +71,51 @@ var displayStreaming = function (movies) {
     }
 };
 
+searchButton.addEventListener("click", function() {
+    var streaming;
+    var genre;
+       if (disney.checked) {
+            streaming = disney;
+        }
+        else if (netflix.checked) {
+            streaming = "netflix";
+        }
+        else {
+            streaming = hulu;
+        };
+        if (action.checked) {
+            genre = "28";
+        }
+        else if (adventure.checked) {
+            genre = "12";
+        }
+        else if (biography.checked) {
+            genre = "1";
+        }
+        else if (comedy.checked) {
+            genre = "35";
+        }
+        else if (crime.checked) {
+            genre = "80";
+        }
+        else if (drama.checked) {
+            genre = "18";
+        }
+        else if (horror.checked) {
+            genre = "27";
+        }
+        else if (musical.checked) {
+            genre = "4";
+        }
+        else if (mystery.checked) {
+            genre = "9648";
+        }
+        else if (romance.checked) {
+            genre = "10749";
+        }
+        else if (sport.checked) {
+            genre = "5";
+        };
+
+        streamingAPI(streaming, genre);
+    });
