@@ -71,6 +71,10 @@ button {
     margin-bottom: 30px;
 }
 
+.result button {
+    display: none;
+}
+
 .card {
     margin:20px;
 }

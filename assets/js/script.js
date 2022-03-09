@@ -4,6 +4,10 @@ var searchButton = document.querySelector("#button");
 const disney = document.querySelector("#disney");
 const netflix = document.querySelector("#netflix");
 const hulu = document.querySelector("#hulu");
+var disneyBtn = document.querySelector(".disney-btn");
+var netflixBtn = document.querySelector(".netflix-btn");
+var huluBtn = document.querySelector(".hulu-btn");
+
 
 
 // fetch movies based on genre and streaming service
@@ -20,10 +24,11 @@ var streamingAPI = function (streamingService, genre) {
 
             if (response.ok) {
                 response.json().then(function (data) {
+                    // console.log(data);
                     // send data to displaystreaming function to display on page
                     displayStreaming(data);
                     // send movie titles to moviedb api
-
+                    displayButton(streamingService, data);
                 })
             }
         })
@@ -32,9 +37,8 @@ var streamingAPI = function (streamingService, genre) {
         });
 };
 
-
 var displayStreaming = function (movies) {
-    console.log(movies);
+    // console.log(movies);
 
     // iterate through movie data
     for (var i = 0; i < 5; i++) {
@@ -43,7 +47,7 @@ var displayStreaming = function (movies) {
         var nameEl = movieElement.querySelector("#movieName-" + i);
         var movieName = movies.results[i].title;
         nameEl.textContent = movieName;
-        console.log(movieName);
+        // console.log(movieName);
 
         // display movie overview
         var overviewEl = movieElement.querySelector("#overview-" + i);
@@ -69,7 +73,7 @@ var displayStreaming = function (movies) {
                     response.json().then(function (data) {
 
                         // send data to displaystreaming function to display on page
-                        console.log(data, index);
+                        // console.log(data, index);
                         displayRating(data, index);
                         index = index + 1;
 
@@ -87,22 +91,44 @@ var displayRating = function (movies, index) {
 
     var ratingEl = movieElement.querySelector("#rating-" + index);
     var ratingNum = movies.results[0].vote_average;
-    ratingEl.textContent = ratingNum;
-    console.log(ratingNum);
+    ratingEl.textContent = ratingNum + " / 10";
+    // console.log(ratingNum);
 }
 
+var displayButton = function (streamingService, data) {
+    for (var i = 0; i < 5; i++) {
+        var watchOnBtn = document.querySelector("." + streamingService + "-btn-" + i).style.display = "block";
+        console.log(data);
+        console.log(streamingService);
+        if (streamingService === "disney") {
+            link = data.results[i].streamingInfo.disney.us.link;
+        }
+        else if (streamingService === "netflix") {
+            link = data.results[i].streamingInfo.netflix.us.link;
+        }
+        else {
+            link = data.results[i].streamingInfo.hulu.us.link;
+        }
+        watchOnBtn.href = link;
+        console.log(link);
+
+        watchOnBtn.addEventListener("click", function () {
+            window.location = link;
+        })
+    }
+};
 
 searchButton.addEventListener("click", function () {
     var streaming;
     var genre;
     if (disney.checked) {
-        streaming = disney;
+        streaming = "disney";
     }
     else if (netflix.checked) {
         streaming = "netflix";
     }
     else {
-        streaming = hulu;
+        streaming = "hulu";
     };
     if (action.checked) {
         genre = "28";
