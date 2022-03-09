@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/styles.css">
     <title>Group-Project-1</title>
 </head>
@@ -13,68 +16,173 @@
 <body>
 
     <Header>
-        <h1>Website Name</h1>
+        <h1>Movies Now</h1>
     </Header>
 
     <main class="columns is-mobile">
+        <div class="column is-2 search-criteria">
+            <div id="services">
+                <h3>Streaming Services</h3>
+                <input class="checkbox" type="checkbox" id="disney" name="disney" value="disney">
+                <label for="disney">Disney+</label><br>
 
-        <div class="column is-3">
-            <div class="input">
-                <input id="inputValue" type="text" placeholder="Enter a genre" />
-                <input id="searchBtn" type="submit" value="Submit" class="button search"></input>
+                <input class="checkbox" type="checkbox" id="netflix" name="netflix" value="netflix">
+                <label for="netflix">Netflix</label><br>
+
+                <input class="checkbox" type="checkbox" id="hulu" name="hulu" value="hulu">
+                <label for="hulu">Hulu</label><br>
+            </div>
+            <hr>
+            <!-- </div> -->
+
+            <!-- <div class="column is-2"> -->
+
+            <div class="genres">
+                <h3>Genres</h3>
+                <div data-genre-id="28">
+                    <input class="checkbox" type="checkbox" id="action" name="action" value="action">
+                    <label for="action">Action</label><br>
+                </div>
+                <div data-genre-id="12">
+                    <input class="checkbox" type="checkbox" id="adventure" name="adventure" value="adventure">
+                    <label for="adventure">Adventure</label><br>
+                </div>
+                <div data-genre-id="1">
+                    <input class="checkbox" type="checkbox" id="biography" name="biography" value="biography">
+                    <label for="biography">Biography</label><br>
+                </div>
+                <div data-genre-id="35">
+                    <input class="checkbox" type="checkbox" id="comedy" name="comedy" value="comedy">
+                    <label for="comedy">Comedy</label><br>
+                </div>
+                <div data-genre-id="80">
+                    <input class="checkbox" type="checkbox" id="crime" name="crime" value="crime">
+                    <label for="crime">Crime</label><br>
+                </div>
+                <div data-genre-id="18">
+                    <input class="checkbox" type="checkbox" id="drama" name="drama" value="drama">
+                    <label for="drama">Drama</label><br>
+                </div>
+                <div data-genre-id="27">
+                    <input class="checkbox" type="checkbox" id="horror" name="horror" value="horror">
+                    <label for="horror">Horror</label><br>
+                </div>
+                <div data-genre-id="4">
+                    <input class="checkbox" type="checkbox" id="musical" name="musical" value="musical">
+                    <label for="musical">Musical</label><br>
+                </div>
+                <div>
+                    <input class="checkbox" type="checkbox" id="mystery" name="mystery" value="mystery"
+                        data-genre-id="9648">
+                    <label for="mystery">Mystery</label><br>
+                </div>
+                <div data-genre-id="10749">
+                    <input class="checkbox" type="checkbox" id="romance" name="romance" value="romance">
+                    <label for="romance">Romance</label><br>
+                </div>
+                <div data-genre-id="5">
+                    <input class="checkbox" type="checkbox" id="sport" name="sport" value="sport">
+                    <label for="sport">Sport</label><br>
+                </div>
             </div>
 
-            <div>
-                <input class="comedy" type="checkbox" id="comedy" name="comedy" value="comedy">
-                <label for="comedy">Comedy</label><br>
-
-                <input class="action" type="checkbox" id="action" name="action" value="action">
-                <label for="action">Action</label><br>
-
-                <input class="drama" type="checkbox" id="drama" name="drama" value="drama">
-                <label for="drama">Drama</label><br>
-                
-                <input class="horror" type="checkbox" id="horror" name="horror" value="horror">
-                <label for="horror">Horror</label><br>
-                <!-- add more genres, tie them to corresponding index from API -->
-            </div>
+            <button class="button is-link is-light is-centered is-normal is-fullwidth">Search</button>
         </div>
 
 
-        <div class="column is-9 is-mobile">
+        <div class="" id="movies">
             <div class="result">
-                <h4>Movie Name</h4>
+                <hr>
+                <h4 id="movieName-0"></h4>
+                <hr>
+                <p id="rating-0" class="rating">&starf;&starf;&starf;&starf;&starf;</p>
+                <p id="overview-0">Overview Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                    Soluta dolorum in natus numquam omnis sequi vitae nisi officiis!<br>
+                    Laudantium consequatur expedita corporis nobis eos eaque ea pers
+                    ciatis excepturi necessitatibus odio.</p>
                 <!-- pull movie image from API -->
-                <img src="https://via.placeholder.com/150" alt="">
-                <div class="streaming-services">
+                <img id="movieImage-0" alt="">
+                <div class="streaming-services columns is-mobile is-centered">
                     <!-- add image from API for streaming services -->
-                    <div class="card column is-3">Disney+</div>
-                    <div class="card column is-3">Netflix</div>
-                    <div class="card column is-3">Hulu</div>
+                    <button class="button is-info is-medium is-outlined column is-3">Watch on Disney+</button>
+                    <button class="button is-danger is-medium is-outlined column is-3">Watch on Netflix</button>
+                    <button class="button is-success is-medium is-outlined column is-3">Watch on Hulu</button>
                 </div>
             </div>
 
             <div class="result">
-                <h4>Movie Name</h4>
+                <hr>
+                <h4 id="movieName-1"></h4>
+                <hr>
+                <p id="rating-1" class="rating">&starf;&starf;&starf;&starf;&starf;</p>
+                <p id="overview-1">Overview Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                    Soluta dolorum in natus numquam omnis sequi vitae nisi officiis!<br>
+                    Laudantium consequatur expedita corporis nobis eos eaque ea pers
+                    ciatis excepturi necessitatibus odio.</p>
                 <!-- pull movie image from API -->
-                <img src="https://via.placeholder.com/150" alt="">
-                <div class="streaming-services">
+                <img id="movieImage-1" alt="">
+                <div class="streaming-services columns is-mobile is-centered">
                     <!-- add image from API for streaming services -->
-                    <div class="card column is-3">Disney+</div>
-                    <div class="card column is-3">Netflix</div>
-                    <div class="card column is-3">Hulu</div>
+                    <button class="button is-info is-medium is-outlined column is-3">Watch on Disney+</button>
+                    <button class="button is-danger is-medium is-outlined column is-3">Watch on Netflix</button>
+                    <button class="button is-success is-medium is-outlined column is-3">Watch on Hulu</button>
                 </div>
             </div>
 
             <div class="result">
-                <h4>Movie Name</h4>
+                <hr>
+                <h4 id="movieName-2"></h4>
+                <hr>
+                <p id="rating-2" class="rating">&starf;&starf;&starf;&starf;&starf;</p>
+                <p id="overview-2">Overview Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                    Soluta dolorum in natus numquam omnis sequi vitae nisi officiis!<br>
+                    Laudantium consequatur expedita corporis nobis eos eaque ea pers
+                    ciatis excepturi necessitatibus odio.</p>
                 <!-- pull movie image from API -->
-                <img src="https://via.placeholder.com/150" alt="">
-                <div class="streaming-services">
+                <img id="movieImage-2" alt="">
+                <div class="streaming-services columns is-mobile is-centered">
                     <!-- add image from API for streaming services -->
-                    <div class="card column is-3">Disney+</div>
-                    <div class="card column is-3">Netflix</div>
-                    <div class="card column is-3">Hulu</div>
+                    <button class="button is-info is-medium is-outlined column is-3">Watch on Disney+</button>
+                    <button class="button is-danger is-medium is-outlined column is-3">Watch on Netflix</button>
+                    <button class="button is-success is-medium is-outlined column is-3">Watch on Hulu</button>
+                </div>
+            </div>
+
+            <div class="result">
+                <hr>
+                <h4 id="movieName-3"></h4>
+                <hr>
+                <p id="rating-3" class="rating">&starf;&starf;&starf;&starf;&starf;</p>
+                <p id="overview-3">Overview Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                    Soluta dolorum in natus numquam omnis sequi vitae nisi officiis!<br>
+                    Laudantium consequatur expedita corporis nobis eos eaque ea pers
+                    ciatis excepturi necessitatibus odio.</p>
+                <!-- pull movie image from API -->
+                <img id="movieImage-3" alt="">
+                <div class="streaming-services columns is-mobile is-centered">
+                    <!-- add image from API for streaming services -->
+                    <button class="button is-info is-medium is-outlined column is-3">Watch on Disney+</button>
+                    <button class="button is-danger is-medium is-outlined column is-3">Watch on Netflix</button>
+                    <button class="button is-success is-medium is-outlined column is-3">Watch on Hulu</button>
+                </div>
+            </div>
+
+            <div class="result">
+                <hr>
+                <h4 id="movieName-4"></h4>
+                <hr>
+                <p id="rating-4" class="rating">&starf;&starf;&starf;&starf;&starf;</p>
+                <p id="overview-4">Overview Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                    Soluta dolorum in natus numquam omnis sequi vitae nisi officiis!<br>
+                    Laudantium consequatur expedita corporis nobis eos eaque ea pers
+                    ciatis excepturi necessitatibus odio.</p>
+                <!-- pull movie image from API -->
+                <img id="movieImage-4" alt="">
+                <div class="streaming-services columns is-mobile is-centered">
+                    <!-- add image from API for streaming services -->
+                    <button class="button is-info is-medium is-outlined column is-3">Watch on Disney+</button>
+                    <button class="button is-danger is-medium is-outlined column is-3">Watch on Netflix</button>
+                    <button class="button is-success is-medium is-outlined column is-3">Watch on Hulu</button>
                 </div>
             </div>
         </div>
