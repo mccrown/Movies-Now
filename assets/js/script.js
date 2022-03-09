@@ -70,8 +70,40 @@ var displayStreaming = function (movies) {
         imageEl.setAttribute("alt", "Movie poster");
         imageEl.style.width = "400px";
         imageEl.style.width = "200px";
+
+
+        var index = 0;
+
+        fetch("https://api.themoviedb.org/3/search/movie?api_key=aa604aaef9964db123112323ebc2e25b&query=" + movies.results[i].title.replace(" ", "+"))
+
+            .then(response => {
+
+                if (response.ok) {
+                    response.json().then(function (data) {
+
+                        // send data to displaystreaming function to display on page
+                        console.log(data, index);
+                        displayRating(data, index);
+                        index = index + 1;
+
+                    })
+                }
+            })
+            .catch(err => {
+                console.error(err);
+            });
     }
 };
+
+
+var displayRating = function (movies, index) {
+
+    var ratingEl = movieElement.querySelector("#rating-" + index);
+    var ratingNum = movies.results[0].vote_average;
+    ratingEl.textContent = ratingNum;
+    console.log(ratingNum);
+}
+
 
 searchButton.addEventListener("click", function () {
     var streaming;
