@@ -68,8 +68,8 @@ var displayStreaming = function (movies) {
         var imageEl = movieElement.querySelector("#movieImage-" + i);
         imageEl.setAttribute("src", image);
         imageEl.setAttribute("alt", "Movie poster");
+        imageEl.style.width = "400px";
         imageEl.style.width = "200px";
-        imageEl.style.width = "100px";
     }
 };
 

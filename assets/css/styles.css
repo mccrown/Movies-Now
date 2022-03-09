@@ -67,6 +67,10 @@ button {
     text-align: center;
 }
 
+.result p{
+    margin-bottom: 30px;
+}
+
 .card {
     margin:20px;
 }
