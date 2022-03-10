@@ -12,7 +12,7 @@ main{
 
 header{
     margin-left: none;
-    background-image: url(/assets/images/film\ roll.jpg);
+    background-image: url(../images/film\ roll.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: bottom;
