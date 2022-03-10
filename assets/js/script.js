@@ -59,8 +59,6 @@ var displayStreaming = function (movies) {
         var imageEl = movieElement.querySelector("#movieImage-" + i);
         imageEl.setAttribute("src", image);
         imageEl.setAttribute("alt", "Movie poster");
-        imageEl.style.width = "400px";
-        imageEl.style.width = "200px";
 
 
         var index = 0;
@@ -96,26 +94,52 @@ var displayRating = function (movies, index) {
 }
 
 var displayButton = function (streamingService, data) {
+    var index = 0;
     for (var i = 0; i < 5; i++) {
         var watchOnBtn = document.querySelector("." + streamingService + "-btn-" + i).style.display = "block";
-        console.log(data);
-        console.log(streamingService);
+        
+        //console.log(data);
+        //console.log(streamingService);
         if (streamingService === "disney") {
             link = data.results[i].streamingInfo.disney.us.link;
+            streamingDisBtn(link,index);
         }
         else if (streamingService === "netflix") {
             link = data.results[i].streamingInfo.netflix.us.link;
+            streamingNetBtn(link,index); 
+                  
         }
         else {
             link = data.results[i].streamingInfo.hulu.us.link;
+            streamingHuluBtn(link,index);
         }
+        index++;
+              
+        
         watchOnBtn.href = link;
-        console.log(link);
-
-        watchOnBtn.addEventListener("click", function () {
-            window.location = link;
-        })
+        console.log(link);  
     }
+};
+
+var streamingNetBtn = function (link,index) {
+    for (i=0; i < 5; i++)
+    document.getElementById("netflix-btn-" + index).onclick = function () {
+        location.href = link;
+    }   
+};
+
+var streamingDisBtn = function (link,index) {
+    for (i=0; i < 5; i++)
+    document.getElementById("disney-btn-" + index).onclick = function () {
+        location.href = link;
+    }   
+};
+
+var streamingHuluBtn = function (link,index) {
+    for (i=0; i < 5; i++)
+    document.getElementById("hulu-btn-" + index).onclick = function () {
+        location.href = link;
+    }   
 };
 
 searchButton.addEventListener("click", function () {
