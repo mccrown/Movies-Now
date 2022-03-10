@@ -4,23 +4,14 @@ var searchButton = document.querySelector("#button");
 const disney = document.querySelector("#disney");
 const netflix = document.querySelector("#netflix");
 const hulu = document.querySelector("#hulu");
+var disneyBtn = document.querySelector(".disney-btn");
+var netflixBtn = document.querySelector(".netflix-btn");
+var huluBtn = document.querySelector(".hulu-btn");
+
 
 
 // fetch movies based on genre and streaming service
 var streamingAPI = function (streamingService, genre) {
-
-    // streamingService = whatever streaming service checkbox is checked
-    //var streamingService = function () {
-    //   if (disney.checked) {
-    //         streamingService = disney;
-    //     }
-    //     else if (netflix.checked) {
-    //         streamingService = netflix;
-    //     }
-    //     else {
-    //         streamingService = hulu;
-    //     };
-    // };
 
     fetch("https://streaming-availability.p.rapidapi.com/search/basic?country=us&service=" + streamingService + "&type=movie&genre=" + genre + "&page=1&output_language=en&language=en", {
         "method": "GET",
@@ -33,10 +24,11 @@ var streamingAPI = function (streamingService, genre) {
 
             if (response.ok) {
                 response.json().then(function (data) {
+                    // console.log(data);
                     // send data to displaystreaming function to display on page
                     displayStreaming(data);
                     // send movie titles to moviedb api
-
+                    displayButton(streamingService, data);
                 })
             }
         })
@@ -45,9 +37,8 @@ var streamingAPI = function (streamingService, genre) {
         });
 };
 
-
 var displayStreaming = function (movies) {
-    console.log(movies);
+    // console.log(movies);
 
     // iterate through movie data
     for (var i = 0; i < 5; i++) {
@@ -56,7 +47,7 @@ var displayStreaming = function (movies) {
         var nameEl = movieElement.querySelector("#movieName-" + i);
         var movieName = movies.results[i].title;
         nameEl.textContent = movieName;
-        console.log(movieName);
+        // console.log(movieName);
 
         // display movie overview
         var overviewEl = movieElement.querySelector("#overview-" + i);
@@ -68,8 +59,8 @@ var displayStreaming = function (movies) {
         var imageEl = movieElement.querySelector("#movieImage-" + i);
         imageEl.setAttribute("src", image);
         imageEl.setAttribute("alt", "Movie poster");
-        imageEl.style.width = "400px";
-        imageEl.style.width = "200px";
+        imageEl.width = "100px";
+        imageEl.height = "200px";
 
 
         var index = 0;
@@ -82,7 +73,7 @@ var displayStreaming = function (movies) {
                     response.json().then(function (data) {
 
                         // send data to displaystreaming function to display on page
-                        console.log(data, index);
+                        // console.log(data, index);
                         displayRating(data, index);
                         index = index + 1;
 
@@ -100,22 +91,70 @@ var displayRating = function (movies, index) {
 
     var ratingEl = movieElement.querySelector("#rating-" + index);
     var ratingNum = movies.results[0].vote_average;
-    ratingEl.textContent = ratingNum;
-    console.log(ratingNum);
+    ratingEl.textContent = ratingNum + " / 10";
+    // console.log(ratingNum);
 }
 
+var displayButton = function (streamingService, data) {
+    var index = 0;
+    for (var i = 0; i < 5; i++) {
+        var watchOnBtn = document.querySelector("." + streamingService + "-btn-" + i).style.display = "block";
+
+        //console.log(data);
+        //console.log(streamingService);
+        if (streamingService === "disney") {
+            link = data.results[i].streamingInfo.disney.us.link;
+            streamingDisBtn(link, index);
+        }
+        else if (streamingService === "netflix") {
+            link = data.results[i].streamingInfo.netflix.us.link;
+            streamingNetBtn(link, index);
+
+        }
+        else {
+            link = data.results[i].streamingInfo.hulu.us.link;
+            streamingHuluBtn(link, index);
+        }
+        index++;
+
+
+        watchOnBtn.href = link;
+        console.log(link);
+    }
+};
+
+var streamingNetBtn = function (link, index) {
+    for (i = 0; i < 5; i++)
+        document.getElementById("netflix-btn-" + index).onclick = function () {
+            location.href = link;
+        }
+};
+
+var streamingDisBtn = function (link, index) {
+    for (i = 0; i < 5; i++)
+        document.getElementById("disney-btn-" + index).onclick = function () {
+            location.href = link;
+        }
+};
+
+var streamingHuluBtn = function (link, index) {
+    for (i = 0; i < 5; i++)
+        document.getElementById("hulu-btn-" + index).onclick = function () {
+            location.href = link;
+        }
+};
 
 searchButton.addEventListener("click", function () {
     var streaming;
     var genre;
     if (disney.checked) {
-        streaming = disney;
+        streaming = "disney";
     }
     else if (netflix.checked) {
         streaming = "netflix";
     }
     else {
-        streaming = hulu;
+        streaming = "hulu";
     };
     if (action.checked) {
         genre = "28";
