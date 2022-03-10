@@ -92,7 +92,23 @@ var displayRating = function (movies, index) {
     var ratingEl = movieElement.querySelector("#rating-" + index);
     var ratingNum = movies.results[0].vote_average;
     ratingEl.textContent = ratingNum + " / 10";
-    // console.log(ratingNum);
+    console.log(ratingNum);
+
+    // if (ratingNum < 1.5){
+    //     ratingEl.innerHTML = "&starf;";
+    // }
+    // else if (1.5 < ratingNum < 3.5){
+    //     ratingEl.innerHTML = "&starf;&starf;";
+    // }
+    // else if (3.5 < ratingNum < 5.5){
+    //     ratingEl.innerHTML = "&starf;&starf;&starf;";
+    // }
+    // else if (5.5 < ratingNum < 7.5){
+    //     ratingEl.innerHTML = "&starf;&starf;&starf;&starf";
+    // }
+    // else {
+    //     ratingEl.innerHTML = "&starf;&starf;&starf;&starf&starf;";
+    }
 }
 
 var displayButton = function (streamingService, data) {
