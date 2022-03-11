@@ -39,6 +39,8 @@ h1 {
 
 hr {
     background-color: rgb(85, 108, 155);
+    width: 50%;
+    margin: 20px auto;
 }
 
 h3{
@@ -59,7 +61,7 @@ button {
 }
 
 .search-criteria {
-    margin-right: 300px;
+    margin-right: 20px;
 }
 
 .result{
