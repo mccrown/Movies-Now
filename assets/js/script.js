@@ -59,8 +59,8 @@ var displayStreaming = function (movies) {
         var imageEl = movieElement.querySelector("#movieImage-" + i);
         imageEl.setAttribute("src", image);
         imageEl.setAttribute("alt", "Movie poster");
-        imageEl.width = "100px";
-        imageEl.height = "200px";
+        image.width = "100px";
+        image.height = "200px";
 
 
         var index = 0;
