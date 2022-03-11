@@ -7,13 +7,15 @@ const hulu = document.querySelector("#hulu");
 var disneyBtn = document.querySelector(".disney-btn");
 var netflixBtn = document.querySelector(".netflix-btn");
 var huluBtn = document.querySelector(".hulu-btn");
+var linkHistory = JSON.parse(localStorage.getItem("links")) || [];
+var historyEl = document.getElementById("history");
 
 
 
 // fetch movies based on genre and streaming service
 var streamingAPI = function (streamingService, genre) {
 
-    fetch("https://streaming-availability.p.rapidapi.com/search/basic?country=us&service=" + streamingService + "&type=movie&genre=" + genre + "&page=1&output_language=en&language=en", {
+    fetch("https://streaming-availability.p.rapidapi.com/search/basic?country=us&service=" + streamingService + "&type=movie&genre=" + genre + "&output_language=en&language=en", {
         "method": "GET",
         "headers": {
             "x-rapidapi-host": "streaming-availability.p.rapidapi.com",
@@ -24,7 +26,7 @@ var streamingAPI = function (streamingService, genre) {
 
             if (response.ok) {
                 response.json().then(function (data) {
-                    // console.log(data);
+                    console.log(data);
                     // send data to displaystreaming function to display on page
                     displayStreaming(data);
                     // send movie titles to moviedb api
@@ -104,16 +106,19 @@ var displayButton = function (streamingService, data) {
         //console.log(streamingService);
         if (streamingService === "disney") {
             link = data.results[i].streamingInfo.disney.us.link;
-            streamingDisBtn(link, index);
+            title = data.results[i].title;
+            streamingDisBtn(link, index, title);
         }
         else if (streamingService === "netflix") {
             link = data.results[i].streamingInfo.netflix.us.link;
-            streamingNetBtn(link, index);
+            title = data.results[i].title;
+            streamingNetBtn(link, index, title);
 
         }
         else {
             link = data.results[i].streamingInfo.hulu.us.link;
-            streamingHuluBtn(link, index);
+            title = data.results[i].title;
+            streamingHuluBtn(link, index, title);
         }
         index++;
 
@@ -123,26 +128,68 @@ var displayButton = function (streamingService, data) {
     }
 };
 
-var streamingNetBtn = function (link, index) {
+var streamingNetBtn = function (link, index, title) {
     for (i = 0; i < 5; i++)
+    var linkSave = {
+        clickedLink: link,
+        title: title
+    }
         document.getElementById("netflix-btn-" + index).onclick = function () {
             location.href = link;
+            linkHistory.push(linkSave);
+            localStorage.setItem("links", JSON.stringify(linkHistory));
         }
 };
 
-var streamingDisBtn = function (link, index) {
+var streamingDisBtn = function (link, index, title) {
     for (i = 0; i < 5; i++)
+        var linkSave = {
+            clickedLink: link,
+            title: title
+        }
         document.getElementById("disney-btn-" + index).onclick = function () {
             location.href = link;
+            linkHistory.push(linkSave);
+            localStorage.setItem("links", JSON.stringify(linkHistory));
         }
 };
 
-var streamingHuluBtn = function (link, index) {
+var streamingHuluBtn = function (link, index, title) {
     for (i = 0; i < 5; i++)
+    var linkSave = {
+        clickedLink: link,
+        title: title
+    }
         document.getElementById("hulu-btn-" + index).onclick = function () {
             location.href = link;
+            linkHistory.push(linkSave);
+            localStorage.setItem("links", JSON.stringify(linkHistory));
         }
 };
+
+var loadLinkHistory = function () {
+    var searchHis = [];
+    searchHis = linkHistory;
+    console.log(searchHis);
+    createHistoryEl(searchHis);
+}
+
+var createHistoryEl = function (searchHis) {
+    for (var i = 0; i < searchHis.length; i++) {
+        const link = searchHis[i].clickedLink
+        const title = searchHis[i].title;
+        var historyItem = document.createElement("li");
+        historyItem.setAttribute("readonly", true);
+        historyItem.setAttribute("class", "button history is-link is-light is-centered is-normal is-fullwidth block")
+        historyItem.setAttribute("href", link);
+        historyItem.textContent = title;
+        historyItem.addEventListener("click", function (event){
+            event.preventDefault();
+            location.href = link;
+        })
+        historyEl.append(historyItem);
+    }
+}
 
 searchButton.addEventListener("click", function () {
     var streaming;
@@ -192,3 +239,4 @@ searchButton.addEventListener("click", function () {
 
     streamingAPI(streaming, genre);
 });
+loadLinkHistory();
