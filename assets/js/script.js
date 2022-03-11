@@ -13,7 +13,7 @@ var huluBtn = document.querySelector(".hulu-btn");
 // fetch movies based on genre and streaming service
 var streamingAPI = function (streamingService, genre) {
 
-    fetch("https://streaming-availability.p.rapidapi.com/search/basic?country=us&service=" + streamingService + "&type=movie&genre=" + genre + "&page=1&output_language=en&language=en", {
+    fetch("https://streaming-availability.p.rapidapi.com/search/basic?country=us&service=" + streamingService + "&type=movie&genre=" + genre + "&output_language=en&language=en", {
         "method": "GET",
         "headers": {
             "x-rapidapi-host": "streaming-availability.p.rapidapi.com",
@@ -24,7 +24,7 @@ var streamingAPI = function (streamingService, genre) {
 
             if (response.ok) {
                 response.json().then(function (data) {
-                    // console.log(data);
+                    console.log(data);
                     // send data to displaystreaming function to display on page
                     displayStreaming(data);
                     // send movie titles to moviedb api
