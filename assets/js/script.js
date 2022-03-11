@@ -7,6 +7,7 @@ const hulu = document.querySelector("#hulu");
 var disneyBtn = document.querySelector(".disney-btn");
 var netflixBtn = document.querySelector(".netflix-btn");
 var huluBtn = document.querySelector(".hulu-btn");
+var linkHistory = JSON.parse(localStorage.getItem("links")) || [];
 
 
 
@@ -127,6 +128,8 @@ var streamingNetBtn = function (link, index) {
     for (i = 0; i < 5; i++)
         document.getElementById("netflix-btn-" + index).onclick = function () {
             location.href = link;
+            linkHistory.push(link);
+            localStorage.setItem("links", JSON.stringify(linkHistory));
         }
 };
 
@@ -134,6 +137,8 @@ var streamingDisBtn = function (link, index) {
     for (i = 0; i < 5; i++)
         document.getElementById("disney-btn-" + index).onclick = function () {
             location.href = link;
+            linkHistory.push(link);
+            localStorage.setItem("links", JSON.stringify(linkHistory));
         }
 };
 
@@ -141,8 +146,19 @@ var streamingHuluBtn = function (link, index) {
     for (i = 0; i < 5; i++)
         document.getElementById("hulu-btn-" + index).onclick = function () {
             location.href = link;
+            linkHistory.push(link);
+            localStorage.setItem("links", JSON.stringify(linkHistory));
         }
 };
+
+var loadLinkHistory = function () {
+    var searchHis = [];
+    searchHis = linkHistory;
+    console.log(searchHis);
+    createHistoryEl(searchHis);
+}
+
+
 
 searchButton.addEventListener("click", function () {
     var streaming;
@@ -192,3 +208,4 @@ searchButton.addEventListener("click", function () {
 
     streamingAPI(streaming, genre);
 });
+loadLinkHistory();
