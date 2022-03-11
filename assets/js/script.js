@@ -176,7 +176,7 @@ var loadLinkHistory = function () {
 
 var createHistoryEl = function (searchHis) {
     for (var i = 0; i < searchHis.length; i++) {
-        const link = searchHis[i].clickedLink
+        const link = searchHis[i].clickedLink;
         const title = searchHis[i].title;
         var historyItem = document.createElement("li");
         historyItem.setAttribute("readonly", true);
