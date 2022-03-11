@@ -178,12 +178,11 @@ var createHistoryEl = function (searchHis) {
     for (var i = 0; i < searchHis.length; i++) {
         const link = searchHis[i].clickedLink
         const title = searchHis[i].title;
-        var historyItem = document.createElement("input");
-        historyItem.setAttribute("type", "text");
+        var historyItem = document.createElement("li");
         historyItem.setAttribute("readonly", true);
-        historyItem.setAttribute("clas", "is-link is-light is-centered is-normal is-fullwidth")
+        historyItem.setAttribute("class", "button history is-link is-light is-centered is-normal is-fullwidth block")
         historyItem.setAttribute("href", link);
-        historyItem.setAttribute("value", title);
+        historyItem.textContent = title;
         historyItem.addEventListener("click", function (event){
             event.preventDefault();
             location.href = link;
