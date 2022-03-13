@@ -1,6 +1,7 @@
 # Movies Now
 
-https://eshumway1045.github.io/Group-Project-1/
+Github URL: https://github.com/mccrown/Movies-Now
+Deployed URL: https://mccrown.github.io/portfolio/
 
 ### Movies Now ends the constant struggle of finding something to watch! Simply select the streaming service and genre you want to search to view the results. Click on the streaming service button to be directed to the movie!
 
@@ -8,4 +9,4 @@ https://eshumway1045.github.io/Group-Project-1/
 
 Built with HTML, CSS, Bulma, jQuery, JavaScript, MovieDB API, and Rapid API
 
-Contributors: Eric Shumway, Conner McCown, Schuyler Mickelson, Lonny Vandenberg
+Contributors: Conner McCown, Eric Shumway, Schuyler Mickelson, Lonny Vandenberg
